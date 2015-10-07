@@ -1,6 +1,6 @@
 module.exports = (robot) ->
   robot.router.post '/gitlab', (req, res) ->
-    channel = "dsp_dev_php"
+    channel = "sandbox"
     json = req.body
     if not json
       res.end ""
@@ -9,11 +9,11 @@ module.exports = (robot) ->
     gitlab_event = "#{json.object_kind}" || 'push'
 
     if gitlab_event is "merge_request" and json.object_attributes.state is "opened"
-      merge_request json, channel
+      merge_request robot, json, channel
 
     res.end()
 
-merge_request = (json, channel) ->
+merge_request = (robot, json, channel) ->
   title = "#{json.object_attributes.title}"
   description = "#{json.object_attributes.description}"
   iid = "#{json.object_attributes.iid}"
