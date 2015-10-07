@@ -1,5 +1,5 @@
 module.exports = (robot) ->
-  robot.router.post '/gitlab/aaaaa', (req, res) ->
+  robot.router.post '/gitlab/ekQpEZPPC0dB85iTEmEtiEwwbV1ikAkIh1oh00LUbdhmsBvpZK', (req, res) ->
     channel = "sandbox"
     json = req.body
     if not json
@@ -22,5 +22,5 @@ merge_request = (robot, json, channel) ->
   name = "#{json.object_attributes.source.name}".toLowerCase()
   url = "https://git.fs-site.net/#{namespace}/#{name}/merge_requests/#{iid}"
   message = "Merge Request was created at #{update_time}.\n#{title}\n#{description}\n#{url}\n@here: http://www.billoblog.com/wp-content/uploads/2009/09/cake1.jpg"
-  envelope = room: "#{channel}"
+  envelope = {room: "#{channel}", link_names: 1}
   robot.send envelope, message
