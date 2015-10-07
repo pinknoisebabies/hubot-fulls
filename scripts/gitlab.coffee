@@ -21,6 +21,6 @@ merge_request = (robot, json, channel) ->
   namespace = "#{json.object_attributes.source.namespace}".toLowerCase()
   name = "#{json.object_attributes.source.name}".toLowerCase()
   url = "https://git.fs-site.net/#{namespace}/#{name}/merge_requests/#{iid}"
-  message = "Merge Request was created at #{update_time}.\n#{title}\n#{description}\n#{url}\n<@here>: http://www.billoblog.com/wp-content/uploads/2009/09/cake1.jpg"
+  message = "Merge Request was created at #{update_time}.\n#{title}\n#{description}\n#{url}\n<!here>: http://www.billoblog.com/wp-content/uploads/2009/09/cake1.jpg"
   envelope = {room: "#{channel}"}
   robot.send envelope, message
