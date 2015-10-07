@@ -1,5 +1,5 @@
 module.exports = (robot) ->
-  robot.router.post '/gitlab?token=aaaaa', (req, res) ->
+  robot.router.post '/gitlab/aaaaa', (req, res) ->
     channel = "sandbox"
     json = req.body
     if not json
