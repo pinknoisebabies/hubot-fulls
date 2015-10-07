@@ -30,3 +30,4 @@ module.exports = (robot) ->
 		          """
     envelope = room: "#{channel}"
     robot.send envelope, message
+		return
