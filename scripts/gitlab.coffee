@@ -1,6 +1,6 @@
 module.exports = (robot) ->
   robot.router.post '/gitlab/ekQpEZPPC0dB85iTEmEtiEwwbV1ikAkIh1oh00LUbdhmsBvpZK', (req, res) ->
-    channel = "sandbox"
+    channel = "dsp_dev_php"
     json = req.body
     if not json
       res.end ""
