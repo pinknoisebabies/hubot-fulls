@@ -13,5 +13,5 @@ module.exports = (robot) ->
 
   new cron '0 0 13 * * 2', () ->
     envelope = {room: "dsp_dev_php"}
-    robot.send envelope, "<!here>: http://blog-imgs-47.fc2.com/h/i/r/hirottagazouneta/105.jpg"
+    robot.send envelope, "<!channel>: http://blog-imgs-47.fc2.com/h/i/r/hirottagazouneta/105.jpg"
   , null, true
