@@ -15,3 +15,8 @@ module.exports = (robot) ->
     envelope = {room: "dsp_dev_php"}
     robot.send envelope, "<!channel>: http://blog-imgs-47.fc2.com/h/i/r/hirottagazouneta/105.jpg"
   , null, true
+
+  new cron '0 0 17 * * 5', () ->
+    envelope = {room: "dsp_dev_php"}
+    robot.send envelope, "<!here>: https://i.ytimg.com/vi/GLQStDik7KI/hqdefault.jpg"
+  , null, true
