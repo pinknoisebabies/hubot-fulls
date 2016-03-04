@@ -6,7 +6,7 @@
 #   hubot yami register <URL> - register a new YAMI
 
 BRAIN_KEY = 'yami'
-CRON = require('cron').CronJob
+cron = require('cron').CronJob
 
 module.exports = (robot) ->
   new cron '0 0 17 * * 5', () ->
