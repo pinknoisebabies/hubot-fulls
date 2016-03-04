@@ -8,12 +8,12 @@
 BRAIN_KEY = 'yami'
 CRON = require('cron').CronJob
 
-new cron '0 0 17 * * 5', () ->
-envelope = {room: "dsp_dev_php"}
-robot.send envelope, "<!here>: " + msg.random images
-, null, true
-
 module.exports = (robot) ->
+  new cron '0 0 17 * * 5', () ->
+    envelope = {room: "dsp_dev_php"}
+    robot.send envelope, "<!here>: " + msg.random images
+  , null, true
+
   robot.hear /yami register (http.+)/i, (msg) ->
     image = msg.match[1]
     images = robot.brain.get(BRAIN_KEY) or []
