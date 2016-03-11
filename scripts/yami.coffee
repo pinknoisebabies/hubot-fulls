@@ -10,9 +10,9 @@ cron = require('cron').CronJob
 random = require('hubot').Response::random
 
 module.exports = (robot) ->
-  new cron '0 55 17 * * 5', () ->
+  new cron '0 0 17 * * 5', () ->
     envelope = {room: "dsp_dev_php"}
-    robot.send envelope, "<!here>: " + randomImage
+    robot.send envelope, "<!here>: " + randomImage()
   , null, true
 
   robot.hear /yami register (http.+)/i, (msg) ->
@@ -24,7 +24,10 @@ module.exports = (robot) ->
     msg.send "YAMI Registered"
 
   robot.hear /yami(?:\s*)$/i, (msg) ->
-    msg.send randomImage
+    msg.send randomImage()
+
+  robot.hear /yami test/i, (msg) ->
+    msg.send "<!here>: " + randomImage()
 
   randomImage = () ->
     default_images = [
