@@ -9,9 +9,9 @@ BRAIN_KEY = 'yami'
 cron = require('cron').CronJob
 
 module.exports = (robot) ->
-  new cron '0 0 17 * * 5', () ->
+  new cron '0 45 17 * * 5', () ->
     envelope = {room: "dsp_dev_php"}
-    robot.send envelope, "<!here>: " + msg.random images
+    robot.send envelope, "<!here>: " + robot.random images
   , null, true
 
   robot.hear /yami register (http.+)/i, (msg) ->
