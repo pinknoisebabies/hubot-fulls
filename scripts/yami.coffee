@@ -9,13 +9,14 @@ BRAIN_KEY = 'yami'
 cron = require('cron').CronJob
 
 module.exports = (robot) ->
-  new cron '0 45 17 * * 5', () ->
+  new cron '0 51 17 * * 5', () ->
     envelope = {room: "dsp_dev_php"}
     default_images = [
       'https://i.ytimg.com/vi/GLQStDik7KI/hqdefault.jpg'
     ]
     images = default_images.concat(robot.brain.get(BRAIN_KEY) || [])
-    robot.send envelope, "<!here>: " + robot.random images
+    url = random images
+    robot.send envelope, "<!here>: " + url
   , null, true
 
   robot.hear /yami register (http.+)/i, (msg) ->
