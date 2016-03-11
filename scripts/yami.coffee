@@ -7,16 +7,12 @@
 
 BRAIN_KEY = 'yami'
 cron = require('cron').CronJob
+random = require('hubot').Response::random
 
 module.exports = (robot) ->
-  new cron '0 51 17 * * 5', () ->
+  new cron '0 55 17 * * 5', () ->
     envelope = {room: "dsp_dev_php"}
-    default_images = [
-      'https://i.ytimg.com/vi/GLQStDik7KI/hqdefault.jpg'
-    ]
-    images = default_images.concat(robot.brain.get(BRAIN_KEY) || [])
-    url = random images
-    robot.send envelope, "<!here>: " + url
+    robot.send envelope, "<!here>: " + randomImage
   , null, true
 
   robot.hear /yami register (http.+)/i, (msg) ->
@@ -28,10 +24,11 @@ module.exports = (robot) ->
     msg.send "YAMI Registered"
 
   robot.hear /yami(?:\s*)$/i, (msg) ->
+    msg.send randomImage
+
+  randomImage = () ->
     default_images = [
       'https://i.ytimg.com/vi/GLQStDik7KI/hqdefault.jpg'
     ]
-
     images = default_images.concat(robot.brain.get(BRAIN_KEY) || [])
-
-    msg.send msg.random images
+    return random images
